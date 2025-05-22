@@ -6,19 +6,19 @@ import Register from './Register';
 function Auth() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
+  const [activeTab, setActiveTab] = useState<'girişyap' | 'üyeol'>('girişyap');
 
   useEffect(() => {
-    if (location.pathname === '/signup') {
-      setActiveTab('register');
-    } else if (location.pathname === '/signin') {
-      setActiveTab('login');
+    if (location.pathname === '/girişyap') {
+      setActiveTab('girişyap');
+    } else if (location.pathname === '/üyeol') {
+      setActiveTab('üyeol');
     }
   }, [location.pathname]);
 
-  const handleTabChange = (tab: 'login' | 'register') => {
+  const handleTabChange = (tab: 'girişyap' | 'üyeol') => {
     setActiveTab(tab);
-    navigate(tab === 'login' ? '/signin' : '/signup');
+    navigate(tab === 'girişyap' ? '/girişyap' : '/üyeol');
   };
 
   return (
@@ -27,23 +27,23 @@ function Auth() {
       <div className="w-full max-w-md bg-white rounded-xl shadow border px-6 py-8">
         <div className="flex mb-4 border-b">
           <button
-            onClick={() => handleTabChange('login')}
+            onClick={() => handleTabChange('girişyap')}
             className={`px-4 py-2 font-semibold ${
-              activeTab === 'login' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-500'
+              activeTab === 'girişyap' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-500'
             }`}
           >
             Giriş yap
           </button>
           <button
-            onClick={() => handleTabChange('register')}
+            onClick={() => handleTabChange('üyeol')}
             className={`px-4 py-2 font-semibold ${
-              activeTab === 'register' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-500'
+              activeTab === 'üyeol' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-500'
             }`}
           >
             Üye ol
           </button>
         </div>
-        {activeTab === 'login' ? <Login /> : <Register />}
+        {activeTab === 'girişyap' ? <Login /> : <Register />}
       </div>
     </div>
   );

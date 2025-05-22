@@ -1,6 +1,5 @@
-// features/axios/axiosInstance.ts
 import axios from 'axios';
-import { store } from '../../store';
+import { store } from '../../components/store';
 import { refreshTokenSuccess,logout } from '../auth/authSlice';
 
 
